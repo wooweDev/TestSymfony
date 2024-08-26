@@ -15,24 +15,24 @@ This is a Symfony 7 application that requires PHP 8.2 or higher.
    git clone <your-repository-url>
    cd <your-repository-folder>
 
-2. Install dependency
+2. **Install dependency
    ```bash
    composer install
    
-4. Set .Env
+4. **Set .Env
   ```bash
   DATABASE_URL="mysql://db_user:db_password@127.0.0.1:3306/db_name"
-
-6. Configure Database
-  ```bash
+  ```
+6. **Configure Database
+   ```bash
    php bin/console make:migration
    php bin/console doctrine:migrations:migrate
-   
-8. Run Seeder
-```bash
+   ```
+8. **Run Seeder
+  ```bash
   php bin/console app:create-admin admin@example.com strongpassword
   php bin/console doctrine:fixtures:load
-
-10. Load Local Server
-```bash
-   php -S localhost:8000 -t 
+  ```
+10. **Load Local Server
+   ```bash
+   php -S localhost:8000 -t public
