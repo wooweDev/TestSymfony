@@ -17,7 +17,7 @@ class UserLoginChecker implements UserCheckerInterface
 
         // Check if the user is active
         if (!$user->isActive()) {
-            throw new CustomUserMessageAccountStatusException('Your account is not active yet :).');
+            throw new CustomUserMessageAccountStatusException('Your account is not active yet.');
         }
     }
 
@@ -25,4 +25,6 @@ class UserLoginChecker implements UserCheckerInterface
     {
         // .. Fill up later on
     }
+
+    // security.yaml ( firewalls "target:path" )
 }
