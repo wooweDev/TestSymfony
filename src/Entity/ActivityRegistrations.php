@@ -16,7 +16,7 @@ class ActivityRegistrations
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?user $user = null;
+    private ?User $user = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
@@ -30,24 +30,24 @@ class ActivityRegistrations
         return $this->id;
     }
 
-    public function getUserId(): ?user
+    public function getUser(): ?User
     {
         return $this->user;
     }
 
-    public function setUserId(?user $user): static
+    public function setUser(?User $user): self
     {
         $this->user = $user;
 
         return $this;
     }
 
-    public function getActivityId(): ?activities
+    public function getActivity(): ?Activities
     {
         return $this->activity;
     }
 
-    public function setActivityId(?activities $activity): static
+    public function setActivity(?Activities $activity): self
     {
         $this->activity = $activity;
 
@@ -62,6 +62,20 @@ class ActivityRegistrations
     public function setRegistrationDate(\DateTimeInterface $registration_date): static
     {
         $this->registration_date = $registration_date;
+
+        return $this;
+    }
+
+    public function setUserId(int $userId): self
+    {
+        $this->user = $userId;
+
+        return $this;
+    }
+
+    public function setActivityId(int $activityId): self
+    {
+        $this->activity = $activityId;
 
         return $this;
     }

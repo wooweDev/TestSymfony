@@ -24,30 +24,56 @@
 <div class="example-wrapper">
     <h1>User Dashboard</h1>
 
+    <!-- Activities -->
     <table>
         <thead>
             <tr>
                 <th>Title</th>
-                <th>Start date</th>
+                <th>Start Date</th>
                 <th>End Date</th>
-                <th>Age requirement</th>
+                <th>Minimum Age</th>
                 <th>Participant Limit</th>
+                <th>Action</th>
             </tr>
         </thead>
         <tbody>
-            {# {% for user in users %}
+            {% for activity in activities %}
                 <tr>
-                    <td>{{ user.getName() }}</td>
-                    <td>{{ user.getFirstname() }}</td>
-                    <td>{{ user.isActive() ? 'Yes' : 'No' }}</td>
+                    <td>{{ activity.getTitle() }}</td>
+                    <td>{{ activity.getStartDate()|date('Y-m-d') }}</td>
+                    <td>{{ activity.getEndDate()|date('Y-m-d') }}</td>
+                    <td>{{ activity.getMinimumAge() }}</td>
+                    <td>{{ activity.getParticipantLimit() }}</td>
                     <td>
-                        <form method="post" action="{{ path('app_admin_activate_user', {'id': user.getId()}) }}">
-                            <input type="hidden" name="user_id" value="{{ user.getId() }}">
-                            <button type="submit">Activate</button>
+                        <form method="post" action="{{ path('app_user_subscribe_activity', {'id': activity.getId()}) }}">
+                            <button type="submit">Subscribe</button>
                         </form>
                     </td>
                 </tr>
-            {% endfor %} #}
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Registered Activities -->
+    <h2>Registered Activities</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Registration Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for registration in registrations %}
+                <tr>
+                    <td>{{ registration.activity.getTitle() }}</td>
+                    <td>{{ registration.activity.getStartDate()|date('Y-m-d') }}</td>
+                    <td>{{ registration.activity.getEndDate()|date('Y-m-d') }}</td>
+                    {# <td>{{ registration.registration_date|date('Y-m-d') }}</td> #}
+                </tr>
+            {% endfor %}
         </tbody>
     </table>
 </div>
